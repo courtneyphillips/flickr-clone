@@ -1,5 +1,6 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   before_filter :authenticate_user!
+
 
   def index
   end
@@ -16,5 +17,12 @@ private
 def user_params
   params.require(:user).permit(:avatar)
 end
+
+
+def show
+  @user = User.find(params[:id])
+  @pictures = @user.pictures
+end
+
 
 end

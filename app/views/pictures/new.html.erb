@@ -1,0 +1,7 @@
+<%= form_for [@user, @picture] do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title, placeholder: 'Title' %>
+<%= f.label :picture %>
+<%= f.file_field :picture %>
+<%= f.submit 'Upload', id: 'fileUpload', data: { disable_with: 'Uploading' } %>
+<% end %>

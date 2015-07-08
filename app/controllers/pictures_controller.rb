@@ -10,6 +10,7 @@ class PicturesController < ApplicationController
   end
 
   def new
+    @user = current_user
     @picture = Picture.new
   end
 
@@ -18,11 +19,19 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.new(params[:picture])
+    @user = User.find(params[:user_id])
+    @picture = @user.pictures.create(picture_params)
     if @picture.save
-      redirect_to @picture, notice: "Your picture was successfully uploaded."
+      redirect_to user_path(@user), notice: "Your picture was successfully uploaded."
     else
       render "new"
     end
   end
+
+  private
+
+  def picture_params
+    params.require(:picture).permit(:title, :image)
+  end
+
 end

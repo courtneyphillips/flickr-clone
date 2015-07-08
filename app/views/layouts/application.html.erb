@@ -17,7 +17,8 @@
       <div class="collapse navbar-collapse" id="navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
-            <li>Logged in as <strong><%= current_user.email %></strong></li>
+            <li><a href="#">Logged in as <strong><%= current_user.email %></strong></a></li>
+            <li><%= link_to 'Upload Photos', new_user_picture_path(current_user) %></li>
             <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
             <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
             <li class='round-image-50'><%= image_tag(current_user.avatar.url(:thumb)) %></li>
@@ -37,8 +38,8 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
-
-<%= yield %>
-
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 </html>

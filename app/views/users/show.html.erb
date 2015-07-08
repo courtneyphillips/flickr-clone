@@ -1,0 +1,5 @@
+<% @pictures.each do |image| %>
+<ul>
+<li class='round-image-50'><%= image_tag(@user.image.url(:medium)) %></li>
+</ul>
+<% end %>
