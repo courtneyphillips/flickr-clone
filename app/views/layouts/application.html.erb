@@ -8,14 +8,31 @@
 </head>
 <body>
 
-  <% if user_signed_in? %>
-    Logged in as <strong><%= current_user.email %></strong>.
-    <%= link_to 'Edit profile', edit_user_registration_path %> |
-    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> |
-    <%= link_to "Login", new_user_session_path %>
-  <% end %>
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <%= link_to 'Flickresque', root_path, class: "navbar-brand"  %>
+      <div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li>Logged in as <strong><%= current_user.email %></strong></li>
+            <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+            <li class='round-image-50'><%= image_tag(current_user.avatar.url(:thumb)) %></li>
+          <% else %>
+            <li><%= link_to "Sign up", new_user_registration_path %> </li>
+            <li><%= link_to "Login", new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+
+
+
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
