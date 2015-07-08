@@ -8,6 +8,7 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'devise'
+gem "paperclip", "~> 4.3"
 
 group :development do
   gem 'byebug'
