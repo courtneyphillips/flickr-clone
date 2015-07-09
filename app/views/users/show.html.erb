@@ -1,5 +1,6 @@
-<% @pictures.each do |image| %>
+<% current_user.pictures.each do |title| %>
 <ul>
-<li class='round-image-50'><%= image_tag(@user.image.url(:medium)) %></li>
+  <%= title.title %>
+  <li class='round-image-50'><%= image_tag(title.image.url(:medium)) %></li> 
 </ul>
 <% end %>

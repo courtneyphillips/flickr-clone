@@ -11,7 +11,7 @@ class PicturesController < ApplicationController
 
   def new
     @user = current_user
-    @picture = Picture.new
+    @picture = current_user.pictures.build
   end
 
   def edit
@@ -19,12 +19,12 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @picture = @user.pictures.create(picture_params)
+    @user = current_user
+    @picture = current_user.pictures.build(picture_params)
     if @picture.save
       redirect_to user_path(@user), notice: "Your picture was successfully uploaded."
     else
-      render "new"
+      render :new
     end
   end
 
