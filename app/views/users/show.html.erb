@@ -1,6 +1,14 @@
-<% current_user.pictures.each do |title| %>
+<% current_user.pictures.each do |image| %>
 <ul>
-  <%= title.title %>
-  <li class='round-image-50'><%= image_tag(title.image.url(:medium)) %></li> 
+  <a href="<%= user_picture_path(current_user, image) %>"><%= image_tag(image.image.url(:medium)) %></a>
+  <%= image.title %>
+  <% if can? :update, @picture %>
+  | <%= link_to "Edit", edit_user_picture_path(image.user_id, image) %> |
+  <% end %>
+  <% if can? :update, @picture %>
+  <%= link_to "Delete", user_picture_path(image.user_id, image), method: :delete %>
+  <% end %>
+
+
 </ul>
 <% end %>

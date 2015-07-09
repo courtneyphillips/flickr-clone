@@ -1,1 +1,8 @@
-<p>Welcome</p>
+<% @pictures.each do |image| %>
+
+<ul>
+  <a href="<%= user_picture_path(image.user_id, image) %>"><%= image_tag(image.image.url(:medium)) %></a>
+  <%= image.title %>
+</ul>
+
+<% end %>

@@ -3,26 +3,28 @@ class UsersController < ApplicationController
 
 
   def index
+    @pictures = Picture.all
   end
 
   def create
   @user = User.create( user_params )
-end
+  end
 
-private
+  private
 
-# Use strong_parameters for attribute whitelisting
-# Be sure to update your create() and update() controller methods.
+  # Use strong_parameters for attribute whitelisting
+  # Be sure to update your create() and update() controller methods.
 
-def user_params
-  params.require(:user).permit(:avatar)
-end
+  def user_params
+    params.require(:user).permit(:avatar)
+  end
 
 
-def show
-  @user = current_user
-  
-end
+  def show
+    @user = current_user
+  end
+
+
 
 
 end

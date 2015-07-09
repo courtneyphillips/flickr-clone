@@ -1,0 +1,14 @@
+<h2><%= @picture.title %></h2>
+<hr>
+
+<%= image_tag(@picture.image.url(:large)) %>
+<% @picture.tags.each do |tag| %>
+  <%= tag.name %>,
+  <% end %>
+
+<%= link_to "Add Tags", new_picture_tag_path(@picture) %>
+
+  <% if current_user %>
+| <%= link_to "Edit", edit_user_picture_path(@picture.user_id, @picture) %> |
+<%= link_to "Delete", user_picture_path(@picture.user_id, @picture), method: :delete %>
+<% end %>

@@ -1,0 +1,5 @@
+<%= form_for [@user, @picture] do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, placeholder: 'Title' %>
+  <%= f.submit 'Submit Changes' %>
+<% end %>

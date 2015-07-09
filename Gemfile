@@ -10,7 +10,7 @@ gem 'turbolinks'
 gem 'devise'
 gem "paperclip", "~> 4.3"
 gem 'bootstrap-sass', '~> 3.3.5'
-
+gem 'cancancan', '~> 1.12.0'
 
 group :development do
   gem 'byebug'
@@ -27,4 +27,7 @@ end
 
 group :test do
   gem 'shoulda-matchers'
+  gem 'simplecov', require: false
+  gem 'factory_girl_rails'
+  gem 'capybara'
 end
